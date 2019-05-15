@@ -8,12 +8,16 @@ defaultEntryPoints = ["https","http"]
   address = ":80"
     [entryPoints.http.redirect]
     entryPoint = "https"
-    regex = "^http://(www\\.)?(xxx\\.com)/(.*)"
-    replacement="https://www.$2/$3"
     permanent = true # redirect permanently
   [entryPoints.https]
   address = ":443"
+    [entryPoints.https.redirect]
+      regex = "^https://(?:www\\.)(.*)"
+      replacement = "https://$1"
+      permanent = true
   [entryPoints.https.tls]
+   [entryPoints.foo]
+   address=":8080"
    [entryPoints.foo.auth]
      [entryPoints.foo.auth.basic]
        users = [
