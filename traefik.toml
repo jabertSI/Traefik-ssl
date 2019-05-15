@@ -14,10 +14,18 @@ defaultEntryPoints = ["https","http"]
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
+   [entryPoints.foo.auth]
+     [entryPoints.foo.auth.basic]
+       users = [
+         "admin:$apr1$ulqJgMt2$WIWb4d6Zv.cqkE.IUbQEs0",
+       ]
 
-[web]
+[api]
+entrypoint="foo"
+
+#[web]
 # Port for the status page
-address = ":8080"
+#address = ":8080"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
