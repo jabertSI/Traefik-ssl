@@ -20,16 +20,16 @@ address = ":8080"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "foxes.com" # <-- change this domain
+domain = "xxxx.com" # <-- change this domain
 watch = true
 exposedbydefault = false
 
 [acme]
-email = "J.sichaib@visioretraite.com" # <-- change this email
+email = "J.sichaib@xxx.com" # <-- change this email
 storage = "acme.json"
 entryPoint = "https"
 [acme.httpChallenge]
   entryPoint = "http"
 OnHostRule = true
 [[acme.domains]]
-  main = "www.foxes.com"
+  main = "www.xxxx.com"
