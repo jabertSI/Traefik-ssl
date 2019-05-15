@@ -1,0 +1,35 @@
+debug = true
+checkNewVersion = true
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    regex = "^http://(www\\.)?(it-wars\\.com)/(.*)"
+    replacement="https://www.$2/$3"
+    permanent = true # redirect permanently
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[web]
+# Port for the status page
+address = ":8080"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "foxes.com" # <-- change this domain
+watch = true
+exposedbydefault = false
+
+[acme]
+email = "J.sichaib@visioretraite.com" # <-- change this email
+storage = "acme.json"
+entryPoint = "https"
+[acme.httpChallenge]
+  entryPoint = "http"
+OnHostRule = true
+[[acme.domains]]
+  main = "www.foxes.com"
