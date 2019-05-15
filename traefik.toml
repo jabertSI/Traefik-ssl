@@ -7,7 +7,8 @@ defaultEntryPoints = ["https","http"]
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]
-    regex = "^http://(www\\.)?(it-wars\\.com)/(.*)"
+    entryPoint = "https"
+    regex = "^http://(www\\.)?(xxx\\.com)/(.*)"
     replacement="https://www.$2/$3"
     permanent = true # redirect permanently
   [entryPoints.https]
