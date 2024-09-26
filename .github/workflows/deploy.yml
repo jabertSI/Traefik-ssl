@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    - name: print out example job
+    - name: Deploy project
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOSTNAME }}
@@ -14,5 +14,5 @@ jobs:
         port: ${{ secrets.PORT }}
         command_timeout: 1m
         script: |
-          touch toto
-          echo "ok" > toto
+          cd Traefik-ssl
+          git pull
